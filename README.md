@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# 🎨 Programmatic Color Palette
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <img width="712" height="100" src="./public/palette.png">
+</p>
 
-## Available Scripts
+## Generate a beautiful color palette
 
-In the project directory, you can run:
+It start generating randomly a base color in the HSL color format.
 
-### `npm start`
+Then generate a palette of `8 colors`, each with a unique trait:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `darken` : light value (L of HSL) is incremented by 15%
+- `lighter` : light value (L of HSL) is decremented by 15%
+- `saturate` : saturation value (S of HSL) is incremented by 15
+- `desaturate` : saturation value (S of HSL) is decremented by 15
+- `hueRotationPlus` : hue value (H of HSL) is rotated by 90 degree
+- `hueRotationMinus` : hue value (H of HSL) is rotated by -90 degree
+- `background` : light value (L of HSL) is incremented by 30%
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🔗 Useful links
 
-### `npm test`
+- [a-programmatic-approach-to-design](https://tympanus.net/codrops/2021/12/07/coloring-with-code-a-programmatic-approach-to-design/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [lch-colors-in-css](https://lea.verou.me/2020/04/lch-colors-in-css-what-why-and-how/)
 
-### `npm run build`
+- [Sass Color Functions](https://codepen.io/chriscoyier/pen/PawaqP)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Run the command
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```shell
+ npm start
+```
