@@ -1,7 +1,7 @@
 # 🎨 Programmatic Color Palette
 
 <p align="center">
-  <img width="712" height="100" src="./public/palette.png">
+  <img src="./public/palette.png">
 </p>
 
 ## Generate a beautiful color palette
