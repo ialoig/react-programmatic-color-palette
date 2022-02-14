@@ -74,7 +74,7 @@ function App() {
 								height={400}
 								cols={20}
 								rows={20}
-								shape={["rect", "circle", "line"]}
+								shape={["rect", "circle", "line", "polygon"]}
 								palette={palette}
 								fill={fill}
 							/>
@@ -85,8 +85,8 @@ function App() {
 							<SVGPixelImage 
 								width={24}
 								height={24}
-								cols={24}
-								rows={24}
+								cols={8}
+								rows={8}
 								shape={["rect"]}
 								palette={palette}
 							/>

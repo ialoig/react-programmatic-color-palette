@@ -1,7 +1,6 @@
 import PropTypes from "prop-types"
 import React, { useEffect, useState } from "react"
 import { getRandom } from "../utils/PaletteUtils"
-import { Rect } from "./shapes"
 
 const SVGPixelImage = ({ width, height, cols, rows, palette }) => {
     
@@ -24,15 +23,16 @@ const SVGPixelImage = ({ width, height, cols, rows, palette }) => {
 
 				const color = palette[getRandom(0, palette.length-1)]
 				randomShapes.push(
-					<Rect 
-						key={Math.random()}
+					<rect
+						id={Math.random()}
 						x={x}
-						y={y}
-						width={colSize}
-						height={rowSize}
-						scale={0.75}
+						y={y} 
+						width={width}
+						height={height}
 						fill={color.value}
-					/>)
+						scale={0.75}
+					/>
+				)
 			}
 		}
 		setShapes(randomShapes)
