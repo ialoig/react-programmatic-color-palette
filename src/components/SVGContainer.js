@@ -12,7 +12,6 @@ const SVGContainer = ({ width, height, fill, ...props }) => {
 				viewBox={viewBox}
 				width={width}
 				height={height}
-				// fill={fill}
 				xmlns="http://www.w3.org/2000/svg"
 				preserveAspectRatio="xMidYMid slice"
 			>

@@ -8,7 +8,7 @@
 
 It start generating randomly a base color in the HSL color format.
 
-Then generate a palette of `8 colors`, each with a unique trait:
+Then generate a palette of `7 colors`, each with a unique trait:
 
 - `darken` : light value (L of HSL) is incremented by 15%
 - `lighter` : light value (L of HSL) is decremented by 15%

@@ -1,7 +1,6 @@
 // https://github.com/catamphetamine/color-space/blob/b940ca709c99048ee9ff3a91b7b66fdb78db72a8/source/index.js
 
 
-
 /**
  * Converts RGB color to CIE 1931 XYZ color space.
  * https://www.image-engineering.de/library/technotes/958-how-to-convert-between-srgb-and-ciexyz

@@ -13,10 +13,8 @@ const SVGShapes = ({ width, height, cols, rows, shape, palette, fill }) => {
 
 
 	useEffect(() => {
-		console.log("[SVGShapes] - fill:", fill)
-		console.log("[SVGShapes] - palette:", palette)
 		generateShapes(palette)
-	}, [])
+	}, [palette])
 	
 
 	const generateShapes = (palette) => {
@@ -25,9 +23,6 @@ const SVGShapes = ({ width, height, cols, rows, shape, palette, fill }) => {
 			for (let y = 0; y<height; y += 	rowSize) {
 
 				const color = palette[getRandom(0, palette.length-1)]
-				console.log("[generate] fill: ", color)
-		
-				// const shape = ["rect", "circle", "line"]
 				switch(shape[getRandom(0, shape.length-1)]) {
 				case "rect":
 					randomShapes.push(

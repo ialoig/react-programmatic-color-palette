@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react"
 import "./styles/App.css"
-import SVGImage from "./components/SVGImage"
+import SVGPalette from "./components/SVGPalette"
 import SVGShapes from "./components/SVGShapes"
-import { createBackgroundPalette, createBasePalette, createHuePalette, hslToString } from "./utils/PaletteUtils"
-// import SVGImage from "./components/SVGImage"
+import { 
+	createBackgroundPalette,
+	createBasePalette,
+	createHuePalette,
+	hslToString } from "./utils/PaletteUtils"
 
 function App() {
 
@@ -13,8 +16,14 @@ function App() {
 	const [fullPalette, setFullPalette] = useState([])
 
 	useEffect(() => {
-		generatePalette()
-	}, [])
+		const handler = setTimeout(() => {
+			generatePalette()
+		}, 2000)
+
+		return () => {
+			clearTimeout(handler)
+		}
+	}, [palette])
 
 
 	const generatePalette = () => {
@@ -23,10 +32,11 @@ function App() {
 		
 		// creating background color
 		const hslBg = createBackgroundPalette(hslBase)
-		const toString = hslToString(hslBg.hue, hslBg.sat, hslBg.light)
-		setFill(toString)
+		const fill = hslToString(hslBg.hue, hslBg.sat, hslBg.light)
+		setFill(fill)
+		console.log("[generatePalette] fill: ", fill)
 		const bgColor = {
-			value:toString,
+			value:fill,
 			name: hslBg.name
 		}
 		
@@ -40,12 +50,14 @@ function App() {
 			}
 			return color
 		})
+		console.log("[generatePalette] palette: ", hslPaletteToString)
 		setPalette(hslPaletteToString)
-
+		
 		// adding background color to the full palette array
 		let fullPalette = [...hslPaletteToString]
 		fullPalette.push(bgColor)
 		setFullPalette(fullPalette)
+
 	}
 	
 	return (
@@ -53,33 +65,40 @@ function App() {
 			{
 				palette && fill && 
 				<>
-					<p className="title gradient-text">{"Shapes"}</p>
-					<SVGShapes 
-						width={256}
-						height={256}
-						cols={4}
-						rows={4}
-						shape={["rect", "circle", "line"]}
-						palette={palette}
-						fill={fill}
-					/>
+					<div className="shapes">
+						<div>
+							<p className="title gradient-text">{"Shapes"}</p>
+							<SVGShapes 
+								width={400}
+								height={400}
+								cols={20}
+								rows={20}
+								shape={["rect", "circle", "line"]}
+								palette={palette}
+								fill={fill}
+							/>
+						</div>
+
+						<div>
+							<p className="title gradient-text">{"Pixels"}</p>
+							<SVGShapes 
+								width={400}
+								height={400}
+								cols={20}
+								rows={20}
+								shape={["rect"]}
+								palette={palette}
+								fill={fill}
+							/>
+						</div>
+					</div>
 					<p className="title gradient-text">{"Palette"}</p>
-					<SVGImage
+					<SVGPalette
 						width={712}
 						height={128}
 						cols={fullPalette.length}
 						rows={1}
 						palette={fullPalette}
-						fill={fill}
-					/>
-					<p className="title gradient-text">{"Pixels"}</p>
-					<SVGShapes 
-						width={256}
-						height={256}
-						cols={4}
-						rows={4}
-						shape={["rect"]}
-						palette={palette}
 						fill={fill}
 					/>
 				</>

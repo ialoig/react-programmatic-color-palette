@@ -1,67 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { labToXyz, lchToLab, rgbToHex, xyzToRgb } from "./ColorsConverter"
 
-const map = (n, start1, end1, start2, end2) => {
-	return ((n - start1) / (end1 - start1)) * (end2 - start2) + start2
-}
-  
-export const adjustHue = (val) => {
-	if (val < 0) val += Math.ceil(-val / 360) * 360
-  
-	return val % 360
-}
-
-/**
- * 
- * @param {Object} opts: Object with following options: base, minLightness, maxLightness, hueStep
- * @returns 
- */
-export const createHueShiftPalette = (opts) => {
-	const { base, minLightness, maxLightness, hueStep } = opts
-  
-	const palette = [base]
-  
-	for (let i = 1; i < 5; i++) {
-		const hueDark = adjustHue(base.h - hueStep * i)
-		const hueLight = adjustHue(base.h + hueStep * i)
-		const lightnessDark = map(i, 0, 4, base.l, minLightness)
-		const lightnessLight = map(i, 0, 4, base.l, maxLightness)
-		const chroma = base.c
-  
-		palette.push({
-			l: lightnessDark,
-			c: chroma,
-			h: hueDark
-		})
-  
-		palette.unshift({
-			l: lightnessLight,
-			c: chroma,
-			h: hueLight
-		})
-	}
-  
-	return palette
-}
-
-
-const serializeHex = color => {
-	if (color === undefined) {
-		return undefined
-	}
-
-	let r = fixup(color.r)
-	let g = fixup(color.g)
-	let b = fixup(color.b)
-
-	return "#" + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)
-}
-
-export const formatHex = c => serializeHex(c)
-
-const clamp = value => Math.max(0, Math.min(1, value))
-const fixup = value => Math.round(clamp(value) * 255)
-
 
 // https://www.w3.org/TR/css-color-4/#oklab-lab-to-predefined
 // - Convert Lab to (D50-adapted) XYZ
@@ -114,20 +53,6 @@ const pastelValues = {
 }
 
 const getColor = (hue, sat, light, name) => {
-	// Set hue
-	// hue = hue || getRandom(minHue, maxHue)
-
-	// Redo if ugly hue is generated
-	// Because magenta is hideous
-	// if (hue > 288 && hue < 316) {
-	// 	hue = getRandom(316, 360)
-	// } else if (hue > 280 && hue < 288) {
-	// 	hue = getRandom(260, 280)
-	// }
-
-	// sat = sat || getRandom(minSat, maxSat)
-	// light = light || getRandom(minLight, maxLight)
-
 	const hsl = {
 		hue: hue,
 		sat: sat,
@@ -137,14 +62,10 @@ const getColor = (hue, sat, light, name) => {
 	return hsl
 }
 
-const changeHue = (hue, rotation) => {
-	const newHue = hue + rotation
-	return (newHue > maxHue) ? newHue - maxHue : newHue
-}
-
-const changeLight = (light, scaleLight) => {
-	const newLight = light + scaleLight
-	return (newLight > maxLight) ? maxLight : newLight
+const adjustHue = (val) => {
+	if (val < 0) val += Math.ceil(-val / 360) * 360
+  
+	return val % 360
 }
 
 const adjustLight = (light) => {
