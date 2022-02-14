@@ -6,7 +6,6 @@
 
 .svg {
   display: flex;
-  float: none;
   padding: 20px;
   align-items: center;
   align-content: center;
@@ -14,11 +13,25 @@
   justify-items: center;
 }
 
-.shapes {
+.svg-container {
+	width: 400px;
+    height: 400px;
+}
+
+.svg-shapes {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-content: center;
+}
+
+.svg-pixels {    
+	display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+	padding: 20px;
 }
 
 .title {

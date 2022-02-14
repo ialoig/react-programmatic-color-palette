@@ -56,7 +56,7 @@ const SVGShapes = ({ width, height, cols, rows, shape, palette, fill }) => {
 							y1={y}
 							y2={y + rowSize}
 							scale={0.75}
-							strokeWidth={10}
+							strokeWidth={5}
 							strokeColor={color.value}
 						/>)
 					break
@@ -78,8 +78,6 @@ const SVGShapes = ({ width, height, cols, rows, shape, palette, fill }) => {
 			}
 		}
 	}
-
-
 
 
 	return (
@@ -104,10 +102,10 @@ SVGShapes.propTypes = {
 }
 
 SVGShapes.defaultProps = {
-	width: 1000,
-	height: 1000,
-	cols: 4,
-	rows: 4,
+	width: 400,
+	height: 400,
+	cols: 20,
+	rows: 20,
 }
 
 export default SVGShapes

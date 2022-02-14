@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import "./styles/App.css"
 import SVGPalette from "./components/SVGPalette"
+import SVGPixelImage from "./components/SVGPixelImage"
 import SVGShapes from "./components/SVGShapes"
 import { 
 	createBackgroundPalette,
@@ -36,7 +37,7 @@ function App() {
 		setFill(fill)
 		console.log("[generatePalette] fill: ", fill)
 		const bgColor = {
-			value:fill,
+			value: fill,
 			name: hslBg.name
 		}
 		
@@ -65,7 +66,7 @@ function App() {
 			{
 				palette && fill && 
 				<>
-					<div className="shapes">
+					<div className="svg-shapes">
 						<div>
 							<p className="title gradient-text">{"Shapes"}</p>
 							<SVGShapes 
@@ -79,19 +80,22 @@ function App() {
 							/>
 						</div>
 
-						<div>
-							<p className="title gradient-text">{"Pixels"}</p>
-							<SVGShapes 
-								width={400}
-								height={400}
-								cols={20}
-								rows={20}
+						<div>	
+							<p className="title gradient-text">{"Pixels 24x24"}</p>
+							<SVGPixelImage 
+								width={24}
+								height={24}
+								cols={24}
+								rows={24}
 								shape={["rect"]}
 								palette={palette}
-								fill={fill}
 							/>
 						</div>
 					</div>
+					
+
+					
+
 					<p className="title gradient-text">{"Palette"}</p>
 					<SVGPalette
 						width={712}
@@ -101,6 +105,7 @@ function App() {
 						palette={fullPalette}
 						fill={fill}
 					/>
+
 				</>
 			}
 		</div>

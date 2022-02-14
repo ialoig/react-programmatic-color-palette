@@ -1,35 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { labToXyz, lchToLab, rgbToHex, xyzToRgb } from "./ColorsConverter"
-
-
-// https://www.w3.org/TR/css-color-4/#oklab-lab-to-predefined
-// - Convert Lab to (D50-adapted) XYZ
-// - If needed, convert from a D50 whitepoint (used by Lab) to the D65 whitepoint used in sRGB and most other RGB spaces, 
-//    with the Bradford transform. prophoto-rgb' does not require this step.
-// - Convert from (D65-adapted) CIE XYZ to linear RGB
-// - Convert from linear-light RGB to RGB (do gamma encoding)
-export const convertToRBG = (color) => {
-	const colorLab = lchToLab([color.l, color.c, color.h])
-	const colorXYZ = labToXyz([colorLab.l, colorLab.a, colorLab.b])
-	const colorRGB = xyzToRgb([colorXYZ.x, colorXYZ.y, colorXYZ.z])
-	console.log("[convertToRBG] colorRGB: ", colorRGB)
-	return colorRGB
-}
-
-export const convertToHex = (colorLCH) => {
-	console.log("[convertToHex] converting color: ", colorLCH)
-	const colorRGB = convertToRBG(colorLCH)
-	const hex =  rgbToHex([colorRGB.r, colorRGB.g, colorRGB.b])
-	console.log("[convertToHex] hex: ", hex)
-	return hex
-}
 
 export const getRandom = (min, max) => {
 	return Math.floor(Math.random() * (max-min+1) + min )
 }
 
 
-//****************** HUE SETTING & HELPERS *********** */
+//****************** HUE SETTING *************/
 
 
 // Settings
@@ -47,10 +23,15 @@ const scaleSat = 15
 
 const rotation = 90
 
+// if you want to generate pastel colors use this values
 const pastelValues = {
 	sat: 60,
 	light: 70
 }
+
+
+//****************** HUE HELPERS *************/
+
 
 const getColor = (hue, sat, light, name) => {
 	const hsl = {
@@ -79,8 +60,8 @@ const adjustSat = (sat) => {
 export const createBasePalette = () => {
 	const base = getColor(
 		getRandom(minHue, maxHue),
-		pastelValues.sat,
-		pastelValues.light,
+		getRandom(minSat, maxSat),
+		getRandom(minLight, maxLight),
 		"base"
 	)
 	return base
